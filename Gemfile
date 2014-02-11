@@ -32,10 +32,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :doc do
+group :development do
 	gem 'rack-cors', :require => 'rack/cors'
 end
 
+gem 'devise'
+gem 'active_model_serializers'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
