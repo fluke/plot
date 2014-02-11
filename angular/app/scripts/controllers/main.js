@@ -13,7 +13,7 @@ angular.module('clientApp')
       $scope.message = factory.data.message;
     });
 
-    $scope.stage = Stage.show({'id':2});
+    $scope.stages = Stage.index();
     $scope.hotspot = Hotspot.show({'id':1});
     
     $scope.createStage = function() {

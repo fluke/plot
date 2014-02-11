@@ -1,19 +1,18 @@
 <div class="header">
   <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#/about">About</a></li>
+    <li><a ng-href="#">Home</a></li>
+    <li class="active"><a ng-href="#/about">About</a></li>
     <li><a ng-href="#/contact">Contact</a></li>
   </ul>
   <h3 class="text-muted">Plot</h3>
 </div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>Plot</h1>
   <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    Sketch out your ideas, plot them together.
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+  <p><a class="btn btn-lg btn-success" ng-href="#">Get to it!</a></p>
 </div>
 
 <div class="row marketing" ng-controller="MainCtrl">
@@ -34,9 +33,7 @@
   <p>{{message}}</p>
 
   <h4 ng-click="createStage()">Stage</h4>
-  <ul ng-repeat="stage in stages">
-    <li>{{stage.title}}</li>
-  </ul>
+  <p>{{stage.title}}</p>
 
   <h4>Hotspot</h4>
   <p>{{hotspot.name}}</p>
