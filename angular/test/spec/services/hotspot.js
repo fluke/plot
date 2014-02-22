@@ -11,8 +11,8 @@ describe('Service: hotspot', function () {
     hotspot = _hotspot_;
   }));
 
-  it('should do something', function () {
-    expect(!!hotspot).toBe(true);
-  });
+  // it('should do something', function () {
+  //   expect(!!hotspot).toBe(true);
+  // });
 
 });

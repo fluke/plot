@@ -11,8 +11,8 @@ describe('Service: Stage', function () {
     Stage = _Stage_;
   }));
 
-  it('should do something', function () {
-    expect(!!Stage).toBe(true);
-  });
+  // it('should do something', function () {
+  //   expect(!!Stage).toBe(true);
+  // });
 
 });

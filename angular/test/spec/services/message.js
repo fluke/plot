@@ -11,8 +11,8 @@ describe('Service: message', function () {
     message = _message_;
   }));
 
-  it('should do something', function () {
-    expect(!!message).toBe(true);
-  });
+  // it('should do something', function () {
+  //   expect(!!message).toBe(true);
+  // });
 
 });

@@ -1,0 +1,97 @@
+<div ng-include="'views/partials/navbar.html'" scope="" onload=""></div>
+
+<div class="jumbotron">
+  <h1>Plot</h1>
+  <p class="lead">
+    Sketch out your ideas, plot them together.
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#">Get to it!</a></p>
+</div>
+
+<div>
+  <h1>Login</h1>
+</div>
+
+<div ng-show="loginError.message" class="error">
+  <p>{{loginError.message}}</p>
+</div>
+
+<div class="body">
+  <div ng-class="{error: loginError.errors.email}">Email: <input ng-model="loginUser.email" />
+    <div ng-show="loginError.errors.email">
+      <div ng-repeat="fieldError in loginError.errors.email">{{fieldError}}</div>
+    </div>
+  </div>
+
+  <div ng-class="{error: loginError.errors.password}">Password: <input type="password" ng-model="loginUser.password" />
+    <div ng-show="loginError.errors.password">
+      <div ng-repeat="fieldError in loginError.errors.password">{{fieldError}}</div>
+    </div>
+  </div>
+
+  <button ng-click="login()" class="btn btn-primary" >Login</button>
+  <button ng-click="logout()" class="btn btn-primary" >Logout</button>
+  <button ng-click="passwordReset()" class="btn btn-primary" >Reset Password</button>
+  <button ng-click="unlock()" class="btn btn-primary" >Unlock</button>
+  <button ng-click="confirm()" class="btn btn-primary" >Confirm</button>
+</div>
+
+<div>
+  <h1>Register / Password Change</h1>
+</div>
+
+<div ng-show="registerError.message" class="error">
+  <p>{{registerError.message}}</p>
+</div>
+
+<div class="body">
+  <div ng-class="{error: registerError.errors.email}">Email: <input ng-model="registerUser.email" />
+    <div ng-show="registerError.errors.email">
+      <div ng-repeat="fieldError in registerError.errors.email">{{fieldError}}</div>
+    </div>
+  </div>
+
+  <div ng-class="{error: registerError.errors.password}">Password: <input type="password" ng-model="registerUser.password" />
+    <div ng-show="registerError.errors.password">
+      <div ng-repeat="fieldError in registerError.errors.password">{{fieldError}}</div>
+    </div>
+  </div>
+
+  <div ng-class="{error: registerError.errors.passwordConfirmation}">Confirm password: <input type="password" ng-model="registerUser.passwordConfirmation" />
+    <div ng-show="registerError.errors.passwordConfirmation">
+      <div ng-repeat="fieldError in registerError.errors.passwordConfirmation">{{fieldError}}</div>
+    </div>
+  </div>
+
+  <button ng-click="register()" class="btn btn-primary" >Register</button>
+  <button ng-click="changePassword()" class="btn btn-primary" >Change Password</button>
+</div>
+
+<div class="row marketing" ng-controller="MainCtrl">
+  <h4>HTML5 Boilerplate</h4>
+  <p>
+    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  </p>
+
+  <h4>Angular</h4>
+  <p>
+    AngularJS is a toolset for building the framework most suited to your application development.
+  </p>
+
+  <h4>Karma</h4>
+  <p>Spectacular Test Runner for JavaScript.</p>
+
+  <h4>Message from server: </h4>
+  <p>{{message}}</p>
+
+  <h4 ng-click="createStage()">Stage</h4>
+  <p>{{stage.title}}</p>
+
+  <h4>Hotspot</h4>
+  <p>{{hotspot.name}}</p>
+
+</div>
+
+<div class="footer">
+  <p>♥ from the Yeoman team</p>
+</div>
