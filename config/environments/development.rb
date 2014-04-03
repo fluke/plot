@@ -29,11 +29,11 @@ Plot::Application.configure do
   config.assets.debug = true
 
   # Throwing issue with Heroku.
-  # config.middleware.use Rack::Cors do
-  #   allow do
-  #     origins 'localhost:9000'
-  #     resource '*', :headers => :any, :methods => [:get, :post, :options, :delete]
-  #   end
-  # end
+  config.middleware.use Rack::Cors do
+    allow do
+      origins 'localhost:9000'
+      resource '*', :headers => :any, :methods => [:get, :post, :options, :delete]
+    end
+  end
 
 end
