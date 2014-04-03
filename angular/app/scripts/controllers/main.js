@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('MainCtrl', function ($scope, authFactory, messageFactory, Stage) {
+  .controller('MainCtrl', function ($scope, authFactory, messageFactory, Stage, Project) {
 
     messageFactory.getMessage().then(function(factory) {
       $scope.message = factory.data.message;
