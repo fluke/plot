@@ -12,7 +12,6 @@ angular.module('clientApp', [
   // Intercept HTTP responses and redirect to login page if unauthorized
   .config(['$httpProvider', function($httpProvider){
     // Prevent rails from making new sessions each time
-    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 
     var interceptor = ['$location', '$rootScope', '$q', function($location, $rootScope, $q) {
       function success(response) {
@@ -48,8 +47,7 @@ angular.module('clientApp', [
       })
       .state('about', {
         url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/about.html'
       })
       .state('login', {
         url: '/login',

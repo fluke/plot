@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('LoginCtrl', function ($scope, $http) {
+  .controller('LoginCtrl', function ($scope, $http, authFactory) {
     $scope.loginUser = {email: null, password: null};
     $scope.loginError = {message: null, errors: {}};
     $scope.registerUser = {email: null, password: null, password_confirmation: null};
     $scope.registerError = {message: null, errors: {}};
 
     $scope.login = function() {
-      $scope.submit({method: 'POST',
+      $scope.submit({
+        method: 'POST',
         url: '/api/v1/users/sign_in.json', // Proxy is on /api/v1 so make sure to scope devise as well
         data: {user: {email: $scope.loginUser.email, password: $scope.loginUser.password}},
         successMessage: 'You have been logged in.',
@@ -17,7 +18,8 @@ angular.module('clientApp')
     };
 
     $scope.logout = function() {
-      $scope.submit({method: 'DELETE',
+      $scope.submit({
+        method: 'DELETE',
         url: '/api/v1/users/sign_out.json',
         successMessage: 'You have been logged out.',
         errorEntity: $scope.loginError
@@ -25,45 +27,30 @@ angular.module('clientApp')
     };
 
     $scope.passwordReset = function () {
-      $scope.submit({method: 'POST',
+      $scope.submit({
+        method: 'POST',
         url: '/api/v1/users/password.json',
         data: {user: {email: $scope.loginUser.email}},
         successMessage: 'Reset instructions have been sent to your e-mail address.',
         errorEntity: $scope.loginError
       });
     };
-
-    $scope.unlock = function () {
-      $scope.submit({method: 'POST',
-        url: '/api/v1/users/unlock.json',
-        data: {user: {email: $scope.loginUser.email}},
-        successMessage: 'An unlock e-mail has been sent to your e-mail address.',
-        errorEntity: $scope.loginError
-      });
-    };
-
-    $scope.confirm = function () {
-      $scope.submit({method: 'POST',
-        url: '/api/v1/users/confirmation.json',
-        data: {user: {email: $scope.loginUser.email}},
-        successMessage: 'A new confirmation link has been sent to your e-mail address.',
-        errorEntity: $scope.loginError
-      });
-    };
-
+    
     $scope.register = function() {
-      $scope.submit({method: 'POST',
+      $scope.submit({
+        method: 'POST',
         url: '/api/v1/users.json',
         data: {user: {email: $scope.registerUser.email,
                        password: $scope.registerUser.password,
                        password_confirmation: $scope.registerUser.password_confirmation}},
-        successMessage: 'You have been registered and logged in.  A confirmation e-mail has been sent to your e-mail address, your access will terminate in 2 days if you do not use the link in that e-mail.',
+        successMessage: 'You have been registered and logged in.',
         errorEntity: $scope.registerError
       });
     };
 
     $scope.changePassword = function() {
-      $scope.submit({method: 'PUT',
+      $scope.submit({
+        method: 'PUT',
         url: '/api/v1/users/password.json',
         data: {user: {email: $scope.registerUser.email,
                        password: $scope.registerUser.password,
@@ -76,12 +63,15 @@ angular.module('clientApp')
     $scope.submit = function(parameters) {
       $scope.resetMessages();
 
-      $http({method: parameters.method,
-             url: parameters.url,
-             data: parameters.data})
+      $http({
+          method: parameters.method,
+          url: parameters.url,
+          data: parameters.data
+        })
         .success(function(data, status){
           if (status === 201 || status === 204){
             parameters.errorEntity.message = parameters.successMessage;
+            authFactory.currentUser($scope.loginUser.email || $scope.registerUser.email);
             $scope.resetUsers();
           } else {
             if (data.error) {

@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Hotspot', function () {
+describe('Service: Project', function () {
 
   // load the service's module
   beforeEach(module('clientApp'));
 
   // instantiate service
-  var Hotspot;
-  beforeEach(inject(function (_Hotspot_) {
-    Hotspot = _Hotspot_;
+  var Project;
+  beforeEach(inject(function (_Project_) {
+    Project = _Project_;
   }));
 
   it('should do something', function () {
-    expect(!!Hotspot).toBe(true);
+    expect(!!Project).toBe(true);
   });
 
 });

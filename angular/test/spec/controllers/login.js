@@ -16,7 +16,17 @@ describe('Controller: LoginCtrl', function () {
     });
   }));
 
-  // it('should attach a list of awesomeThings to the scope', function () {
-  //   expect(scope.awesomeThings.length).toBe(3);
-  // });
+  it('should attach a user object to submit to devise', function () {
+    expect(scope.loginUser.email).toBe(null);
+    expect(scope.loginUser.password).toBe(null);
+  });
+
+  it('should reset users', function () {
+    scope.loginUser.email = "kartikluke@gmail.com";
+    scope.loginUser.password = "kartikluke";
+    scope.resetUsers();
+    expect(scope.loginUser.email).toBe(null);
+    expect(scope.loginUser.password).toBe(null);
+  });
+
 });

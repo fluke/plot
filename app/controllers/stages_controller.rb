@@ -1,18 +1,23 @@
 class StagesController < ApplicationController
   respond_to :json
+  before_filter :authenticate_user!
   before_action :set_stage, only: [:show, :edit, :update, :destroy]
 
   # GET /stages
   # GET /stages.json
   def index
-    @stages = Stage.all
+    @stages = current_user.stages
     render json: @stages, root: false
   end
 
   # GET /stages/1
   # GET /stages/1.json
   def show
-    render json: @stage
+    if current_user.stages.include? @stage
+      render json: @stage
+    else
+      render :json => @error_object.to_json, :status => :forbidden
+    end
   end
 
   # GET /stages/new
@@ -28,6 +33,7 @@ class StagesController < ApplicationController
   # POST /stages.json
   def create
     @stage = Stage.new(stage_params)
+    @stage.user_id = current_user
 
     respond_to do |format|
       if @stage.save

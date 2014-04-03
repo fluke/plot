@@ -1,11 +1,15 @@
 Plot::Application.routes.draw do
 
+  resources :projects
+
   root :controller => 'static', :action => '/public/index.html'
   
   scope :api do
     scope :v1 do
       devise_for :users
       get "/greet" => "pages#greet", :as => 'greet'
+      get "/users/current" => "user#current", as: 'current_user'
+      resources :projects
       resources :stages
       resources :hotspots
     end

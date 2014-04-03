@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: message', function () {
+describe('Service: messageFactory', function () {
 
   // load the service's module
   beforeEach(module('clientApp'));
 
   // instantiate service
-  var message;
-  beforeEach(inject(function (_message_) {
-    message = _message_;
+  var messageFactory;
+  beforeEach(inject(function (_messageFactory_) {
+    messageFactory = _messageFactory_;
   }));
 
-  // it('should do something', function () {
-  //   expect(!!message).toBe(true);
-  // });
+  it('should do something', function () {
+    expect(!!messageFactory).toBe(true);
+  });
 
 });
