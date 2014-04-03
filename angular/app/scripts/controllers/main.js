@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('MainCtrl', function ($scope, authFactory, messageFactory, Stage, Project) {
+  .controller('MainCtrl', function ($scope, authFactory, messageFactory, Stage) {
 
     messageFactory.getMessage().then(function(factory) {
       $scope.message = factory.data.message;
@@ -24,12 +24,12 @@ angular.module('clientApp')
       }
     );
 
-    $scope.projects = Project.index({},
-      function success() {},
-      function err(error) {
-        if(error.status === 401) { console.log('not auth.'); }
-      }
-    );
+    // $scope.projects = Project.index({},
+    //   function success() {},
+    //   function err(error) {
+    //     if(error.status === 401) { console.log('not auth.'); }
+    //   }
+    // );
 
     console.log($scope.stages);
 

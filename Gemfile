@@ -39,6 +39,9 @@ end
 gem 'devise'
 gem 'active_model_serializers'
 
+# To add static public/index.html
+gem 'high_voltage', '~> 2.1.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
